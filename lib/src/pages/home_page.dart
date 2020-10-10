@@ -20,8 +20,10 @@ class HomePage extends StatelessWidget {
         ),
         body: Container(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _swiperTarjetas(),
+              _footer(context),
             ],
           ),
         ));
@@ -46,5 +48,24 @@ class HomePage extends StatelessWidget {
     // return CardSwiper(
     //   peliculas: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     // );
+  }
+
+  Widget _footer(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: Column(
+        children: <Widget>[
+          Text('Populares', style: Theme.of(context).textTheme.subtitle2),
+          FutureBuilder(
+            future: peliculasProvider.getPopulares(),
+            // initialData: InitialData,
+            builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+              snapshot.data?.forEach((peli) => print(peli.title));
+              return Container();
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
