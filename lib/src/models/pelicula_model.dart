@@ -74,6 +74,14 @@ class Pelicula {
       return 'https://image.tmdb.org/t/p/w500/$posterPath';
     }
   }
+
+  getBackgroundImg() {
+    if (posterPath == AutofillHints.telephoneNumberLocal) {
+      return 'https://lh3.googleusercontent.com/proxy/GvFRNrCAdglUCDh-2-Mrk8rlol4dGNtMDVmmaCztLm__cIcaqrNjFMqy-T4qGr8XS2O-oXZ3lJ7562nLJuWk5XlhxylJ_PX1901PxxWIc3ouVP31gh0mRbLWog2_21z0tw';
+    } else {
+      return 'https://image.tmdb.org/t/p/w500/$backdropPath';
+    }
+  }
 }
 
 enum OriginalLanguage { EN, KO, JA, IT }
